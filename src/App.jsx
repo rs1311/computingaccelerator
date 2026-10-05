@@ -1,122 +1,27 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+import React from 'react';
+import { config } from './config.js';
+const faqs = [
+  ['Is It Too Late To Start H2 Computing Tuition?', 'No. H2 Computing is a subject that builds on itself, so it’s never too late to start, even if your exam is in mere days. We can work through the syllabus and your current gaps, and focus on the areas that will help you most in your exams.'],
+  ['Can I get help if I don’t understand H2 Computing at all?', 'Yes. Start with the point where things stop making sense. Lessons can break a topic into smaller steps, work through the reasoning and help you practise applying it. You do not need to arrive with everything figured out.'],
+  ['Can tuition help me work towards an A?', 'The goal is stronger understanding, better code and more confident exam answers. Bring your current work so we can identify gaps and focus your practice. An A is the target, but a grade cannot be guaranteed.'],
+  ['Are you ready for the new H2 Computing syllabus?', 'Yes. The Computing Accelerator is ready to teach the new syllabus and has 100 handcrafted Jupyter notebooks ready. Include your syllabus and exam year when enquiring so your revision can focus on the right requirements.'],
+  ['How much does H2 Computing tuition cost?', 'Personalised H2 Computing tuition costs S$35 per hour. Published lectures and open-source resources are available free, separately from paid lessons.'],
+];
+const enquiry = 'Hi! I’m interested in The Computing Accelerator’s H2 Computing tuition at S$35/hour. My year and exam syllabus: __. What I’m struggling with: __. Preferred lesson times: __.';
+const emailUrl = 'mailto:sriramraghav2006@gmail.com?subject=' + encodeURIComponent('H2 Computing tuition enquiry') + '&body=' + encodeURIComponent(enquiry);
+function Brand(){return <a className="brand" href="#main" aria-label="The Computing Accelerator home"><span>THE COMPUTING</span><strong>ACCELERATOR<i>.</i></strong></a>;}
+function Resource({label,title,description,url,image,alt,number}){return <article className="resource">{image && <img className="resource-image" src={image} alt={alt} width="600" height="360" loading="lazy"/>}<div className="resource-body"><span className="resource-number">{number}</span><p className="eyebrow">{label}</p><h3>{title}</h3><p>{description}</p>{url ? <a className="text-link" href={url} target="_blank" rel="noopener noreferrer">Explore the collection ↗</a> : <span className="pending">Resource link coming soon</span>}</div></article>;}
+export default function App(){
+  return <><a className="skip" href="#main">Skip to content</a><header className="nav wrap"><Brand/><nav aria-label="Main navigation"><a href="#approach">The approach</a><a href="#resources">Resources</a><a href="#tutor">Your tutor</a><a className="nav-cta" href="#lessons">Tuition</a></nav></header>
+  <main id="main">
+    <section className="hero wrap"><div className="hero-copy"><p className="eyebrow">SINGAPORE H2 COMPUTING TUITION · NEW SYLLABUS READY</p><h1>Learn smarter.<br/>Code better.<br/><em>Score higher.</em></h1><p className="intro">Computing doesn’t have to be the subject you can’t wrap your head around. Build real understanding, tackle scary questions and get your A.</p><div className="actions"><a className="button" href="#lessons">Start working towards your A ↗</a><a className="text-link" href="#resources">Explore the resources ↓</a></div><p className="hero-caption">Personalised tuition. <strong>S$35/hour.</strong> Built around the student.</p></div><figure className="hero-visual"><img src="/study.webp" alt="Study notes and an open notebook on a desk" width="1100" height="734" fetchPriority="high"/><figcaption><span>YOUR NEXT STEP</span><strong>Understand it.<br/>Then own it.</strong><p>Yes, you CAN crush your Computing exams.</p></figcaption></figure></section>
+    <section className="stats wrap" aria-label="Learning resources and subject support"><div><strong>100</strong><span>Handcrafted Jupyter workbooks</span></div><div><strong>50</strong><span>Lecture videos for your revision</span></div><div><strong>7 days</strong><span>per week of subject support</span></div></section>
+    <section id="new-syllabus" className="syllabus-banner"><div className="wrap syllabus-inner"><div className="syllabus-copy"><p className="eyebrow">THE SYLLABUS HAS EVOLVED. WE’RE READY.</p><h2>New syllabus.<br/><em>No catching up.</em></h2><p>Cybersecurity theory. Machine learning with scikit-learn. Get support for the new additions to H2 Computing, alongside the foundations you still need to master.</p><a className="button" href="#lessons">Get ready for the new syllabus ↗</a></div><div className="syllabus-topics"><article><span className="topic-tag">CYBERSECURITY THEORY</span><h3>Understand the threat.<br/>Explain the defence.</h3><p>Work through security concepts and the reasoning behind protective measures. Build understanding you can put into clear written answers they cannot fault.</p><span className="ready-tag">Ready to teach ↗</span></article><article><span className="topic-tag">SCIKIT-LEARN</span><h3>Make machine learning make sense.</h3><p>Connect Python practice with the ideas behind machine learning. Get help understanding the workflow, the code and what your results mean.</p><span className="ready-tag">Ready to teach ↗</span></article></div></div></section>
+    <section id="approach" className="section wrap approach"><div className="approach-left"><p className="eyebrow">MAKE THE SUBJECT MAKE SENSE</p><h2>Tired of your school assuming you know how to code?</h2><p className="intro">Being handed an assignment isn’t the same as being taught how to solve it. If lessons move ahead before the basics click, you’re left trying to catch up on your own. We work from where you actually are, explaining the steps that make the code make sense.</p><h3 className="knowledge-heading">You don’t know what you don’t know.</h3><p className="intro">Sometimes a lesson skips the detail you needed most. You can’t ask about a gap you haven’t spotted yet. We help uncover those missing connections and work through them, so your progress doesn’t depend on guessing what was left out.</p></div><div className="steps"><article><span>01</span><div><h3>Find the missing connection.</h3><p>Pinpoint where the idea stops making sense. Rebuild the foundations you need, without rushing past your questions.</p></div></article><article><span>02</span><div><h3>Make the reasoning clear.</h3><p>Connect the concept, the algorithm and the code. Understand how an answer is built so you can produce your own.</p></div></article><article><span>03</span><div><h3>Turn understanding into marks.</h3><p>Practise solving, tracing and explaining. Focus on the gaps that keep slowing you down in exam questions.</p></div></article><a className="text-link" href="#lessons">Get help with your next sticking point ↗</a></div></section>
+    <section id="resources" className="resource-band"><div className="wrap section"><div className="section-heading"><div><p className="eyebrow">PREPARE FOR MORE THAN THE QUESTION YOU EXPECT</p><h2>We Don't Just Lecture Students.<br/><em>We Prepare You For Your Entire.</em></h2></div></div><div className="resource-grid"><Resource number="Projects" image="/learning.webp" alt="A laptop used for collaborative learning" title="Project Building & Support." description="We will help mentor any projects you want to build, or anything you've been working on throughout your journey with us." url={config.notebooksUrl}/><Resource number="Uni Prep" image="/study.webp" alt="A notebook and study materials" title="Interviews & Resume? Done." description="We can guide you through how to optimise your Computing background for uni applications and more." url={config.lecturesUrl}/><Resource number="Portfolio Prep" title="Build Your Computing Profile." description="This is what follows you for the rest of your studies and career." url={config.examsUrl}/></div><p className="collection-note"></p></div></section>
+    <section className="section wrap readiness"><div><p className="eyebrow">YOUR CORE COMPUTING SKILLS</p><h2>Prepare for the paper.<br/>Build skills beyond it.</h2><p>Bring your syllabus and exam year. Focus your lessons on what you need to learn, then practise applying it across different problems.</p></div><div className="topic-grid"><article><span>01</span><h3>Python & problem solving</h3><p>Build working solutions and understand the choices behind them.</p></article><article><span>02</span><h3>Algorithms & data structures</h3><p>Trace how they work. Explain when and why to use them.</p></article><article><span>03</span><h3>Databases & applications</h3><p>Connect the theory to queries, data and practical tasks.</p></article><article><span>04</span><h3>Written & practical preparation</h3><p>Turn understanding into clear explanations and confident code.</p></article></div></section>
+    <section id="lessons" className="wrap booking"><div><p className="eyebrow">SERIOUS ABOUT YOUR GOALS. SENSIBLE ABOUT YOUR BUDGET.</p><h2>More support.<br/>Less financial pressure.</h2><p>Getting help shouldn’t feel like another exam to pass. Get personalised H2 Computing tuition at a student-centred rate, with the published free resources available for independent study.</p><p>Tell us where you’re stuck, what you’re aiming for and when you can learn. Start with a lesson that has a purpose.</p></div><div className="price"><p>Personalised H2 Computing tuition</p><div><strong>S$35</strong><span> / hour</span></div><p>Your questions. Your learning gaps.<br/>Focused time to work through them.</p><a className="button" href={emailUrl}>Email about tuition ↗</a><a className="contact-email" href={emailUrl}>sriramraghav2006@gmail.com</a><span className="price-note"></span></div></section>
+    <section id="tutor" className="section wrap tutor"><div className="profile-photo">{config.portraitUrl ? <img src={config.portraitUrl} alt="Raghav Sriram, founder and Computing tutor" width="600" height="750" loading="lazy"/> : <div className="portrait-placeholder" aria-label="Portrait placeholder for Raghav Sriram"><span>RS</span><p>Raghav Sriram</p><small>Portrait coming soon</small></div>}<div className="profile-label"><strong>Raghav Sriram</strong><span>Founder & Computing Tutor</span></div></div><div className="profile-copy"><p className="eyebrow">MEET YOUR TUTOR</p><h2>Hi, I’m Raghav.</h2><p className="profile-lead">Seven years teaching H2 Computing, Olympiad Programming & Cybersecurity.</p><p>I’ve taught over a dozen STEM education courses involving hundreds of students, and assisted with syllabus design and on-site teaching for VJC’s H2 Computing.</p><p>I built The Computing Accelerator around a simple goal: make Computing easier to understand, give students serious practice resources and keep personalised help affordable.</p><div className="profile-facts"><div><strong>Specialty</strong><span>Hardware Security, Quantum Computing, STEM Education</span></div><div><strong>Classroom experience</strong><span>H2 Computing | NOI Preparation | Robotics | Electronics | Cybersecurity</span></div><div><strong>Teaching Style</strong><span>Not Boring, Engaging, Explanation Oriented, Encouraging</span></div></div><div className="actions"><a className="button" href="#lessons">Learn with me ↗</a>{config.profileUrl && <a className="text-link" href={config.profileUrl} target="_blank" rel="noopener noreferrer">More about me ↗</a>}</div><p className="small">Independent tutor. No school or examining-body affiliation is implied.</p></div></section>
+    <section className="section wrap faq"><div><p className="eyebrow">BEFORE YOU START</p><h2>Your questions,<br/>answered.</h2></div><div>{faqs.map(([q,a])=><details key={q}><summary>{q}</summary><p>{a}</p></details>)}</div></section>
+  </main><footer className="wrap"><Brand/><p>Learn smarter. Code better. Score higher.</p><a href="#main">Back to top ↑</a></footer></>;
 }
-
-export default App
